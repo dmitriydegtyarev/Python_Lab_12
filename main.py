@@ -74,6 +74,15 @@ def get_place_suffix(position):
     else:
         return "th"
 
+# Check input number
+def check_number(number):
+    while True:
+        try:
+            number = int(input(number))
+            return number
+        except ValueError:
+            print("Please enter a valid numeric value")
+
 # Search team
 def search_team(team):
     teams = load_teams()
@@ -124,11 +133,7 @@ while True:
         display_teams()
     elif choice == "2":
         name = input("Enter a command name: ")
-        try:
-            points = int(input("Enter the number of points: "))
-        except ValueError:
-            print("Please enter a valid numeric value")
-            continue
+        points = check_number("Enter the number of points: ")
         add_team(name, points)
     elif choice == "3":
         name = input("Enter a command name for delete: ")
