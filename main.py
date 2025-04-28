@@ -35,8 +35,11 @@ def load_teams():
 
 # Save change to JSON
 def save_teams(teams):
+    sorted_items = sorted(teams.items(), key=lambda x: x[1], reverse=True)
+    sorted_teams = {team: score for team, score in sorted_items}
+
     with open(teams_file, "w", encoding="utf-8") as file:
-        json.dump(teams, file, indent=4)
+        json.dump(sorted_teams, file, indent=4)
 
 # Display content JSON
 def display_teams():
